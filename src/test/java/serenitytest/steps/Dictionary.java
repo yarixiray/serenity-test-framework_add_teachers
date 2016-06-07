@@ -76,4 +76,28 @@ public class Dictionary {
         }
 
     }
+
+    //new scenario to find name of Teacher
+    @Steps
+    EndUserSteps endUser;
+
+    @Given("the user is on the Our Team page")
+    public void gevenTheUserIsOnTheOurTeamPage (){
+        endUser.goToTeacherPage();
+    }
+
+    @When("the user type teachers name in the FindField <teacher>")
+    @Alias("the user type teachers name in the FindField <teacher>")
+    public void whenTheUserFindTeacher(String teacher){
+
+        endUser.openTeacherPage(teacher);
+    }
+
+    @Then("system is present result")
+    @Alias("system is present result")
+    public void thenTheyShouldSeeTheNameOfTeacher(String name, String cource){
+        endUser.shouldSeeNameOfTeacher(name);
+        endUser.shouldSeeCourceForTeacher(cource);
+    }
+
 }

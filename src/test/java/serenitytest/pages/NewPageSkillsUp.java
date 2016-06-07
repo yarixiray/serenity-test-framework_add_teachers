@@ -1,4 +1,5 @@
 package serenitytest.pages;
+import junit.framework.Assert;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
@@ -17,12 +18,24 @@ public class NewPageSkillsUp extends PageObject {
     private By memberclass = By.className("name");
     private By searchheader = By.xpath("//div[@class='greenHeader']");
     private By infoAboutCoach = By.className("text");
+    private By findField = By.id("u5016-2");
+    private String coachFirst = "Александр Галковский";
     private String coach;
 
     public void goToCoachPage(){
         WebElement goToCoachPage = find(linkourteam);
         goToCoachPage.click();
     }
+
+
+
+    public void setFindField(String name){
+        WebElement findMenu = find(findField);
+        findMenu.sendKeys(coachFirst);
+        findMenu.submit();
+        Assert.assertTrue("fdsf",coachFirst);
+    }
+
 
     public List<String> findCoachNmae (){
         List<WebElementFacade> listmembers = findAll(memberclass);
